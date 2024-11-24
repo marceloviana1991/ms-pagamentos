@@ -57,7 +57,8 @@ public class Pagamento {
 
     public Pagamento(PagamentoRequestDto requestDto) {
         this.valor = requestDto.valor();
-        this.nome = requestDto.numero();
+        this.nome = requestDto.nome();
+        this.numero = requestDto.numero();
         this.expiracao = requestDto.expiracao();
         this.codigo = requestDto.codigo();
         this.status = Status.CRIADO;

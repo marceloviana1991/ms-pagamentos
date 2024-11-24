@@ -1,21 +1,28 @@
 package marceloviana1991.sergipefood.pagamentos.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import marceloviana1991.sergipefood.pagamentos.dto.PagamentoRequestDto;
 import marceloviana1991.sergipefood.pagamentos.dto.PagamentoResponseDto;
+import marceloviana1991.sergipefood.pagamentos.http.PedidoClient;
 import marceloviana1991.sergipefood.pagamentos.model.Pagamento;
+import marceloviana1991.sergipefood.pagamentos.model.Status;
 import marceloviana1991.sergipefood.pagamentos.repository.PagamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PagamentoService {
 
     @Autowired
     private PagamentoRepository repository;
+
+    @Autowired
+    private PedidoClient pedido;
 
     public List<PagamentoResponseDto> getPagePagamentos(Pageable pageable) {
         return repository.findAll(pageable).stream().map(PagamentoResponseDto::new).toList();
@@ -56,5 +63,17 @@ public class PagamentoService {
     @Transactional
     public void deletePagamento(Long id) {
         repository.deleteById(id);
+    }
+
+    public void confirmarPagamento(Long id){
+        Optional<Pagamento> pagamento = repository.findById(id);
+
+        if (!pagamento.isPresent()) {
+            throw new EntityNotFoundException();
+        }
+
+        pagamento.get().setStatus(Status.CONFIRMADO);
+        repository.save(pagamento.get());
+        pedido.aprovaPagamento(pagamento.get().getPedidoId());
     }
 }
