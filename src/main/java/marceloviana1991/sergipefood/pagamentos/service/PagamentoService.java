@@ -34,6 +34,9 @@ public class PagamentoService {
 
     @Transactional
     public PagamentoResponseDto savePagamento(PagamentoRequestDto requestDto) {
+        if(pedido.getPedido(requestDto.pedidoId()) == null) {
+            throw new EntityNotFoundException();
+        }
         Pagamento pagamento = new Pagamento(requestDto);
         repository.save(pagamento);
         return new PagamentoResponseDto(pagamento);
@@ -67,11 +70,9 @@ public class PagamentoService {
 
     public void confirmarPagamento(Long id){
         Optional<Pagamento> pagamento = repository.findById(id);
-
-        if (!pagamento.isPresent()) {
+        if (pagamento.isEmpty()) {
             throw new EntityNotFoundException();
         }
-
         pagamento.get().setStatus(Status.CONFIRMADO);
         repository.save(pagamento.get());
         pedido.aprovaPagamento(pagamento.get().getPedidoId());

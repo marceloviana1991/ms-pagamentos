@@ -33,18 +33,6 @@ public class Pagamento {
     @Size(max=100)
     private String nome;
 
-    @NotBlank
-    @Size(max=19)
-    private String numero;
-
-    @NotBlank
-    @Size(max=7)
-    private String expiracao;
-
-    @NotBlank
-    @Size(min=3, max=3)
-    private String codigo;
-
     @NotNull
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -58,9 +46,6 @@ public class Pagamento {
     public Pagamento(PagamentoRequestDto requestDto) {
         this.valor = requestDto.valor();
         this.nome = requestDto.nome();
-        this.numero = requestDto.numero();
-        this.expiracao = requestDto.expiracao();
-        this.codigo = requestDto.codigo();
         this.status = Status.CRIADO;
         this.pedidoId = requestDto.pedidoId();
         this.formaDePagamentoId = requestDto.formaDePagamentoId();
@@ -69,8 +54,6 @@ public class Pagamento {
     public void update(PagamentoRequestDto requestDto) {
         if(requestDto.valor() != null) {this.valor = requestDto.valor();}
         if(requestDto.nome() != null) {this.nome = requestDto.nome();}
-        if(requestDto.expiracao() != null) {this.expiracao = requestDto.expiracao();}
-        if(requestDto.codigo() != null) {this.codigo = requestDto.codigo();}
         if(requestDto.pedidoId() != null) {this.pedidoId = requestDto.pedidoId();}
         if(requestDto.formaDePagamentoId() != null) {this.formaDePagamentoId = requestDto.formaDePagamentoId();}
     }
