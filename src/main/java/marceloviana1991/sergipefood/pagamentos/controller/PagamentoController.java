@@ -6,6 +6,7 @@ import marceloviana1991.sergipefood.pagamentos.dto.PagamentoRequestDto;
 import marceloviana1991.sergipefood.pagamentos.dto.PagamentoResponseDto;
 import marceloviana1991.sergipefood.pagamentos.service.PagamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -69,5 +70,10 @@ public class PagamentoController {
     @PatchMapping("/{id}/confirmar")
     public void confirmarPagamento(@PathVariable @NotNull Long id){
         service.confirmarPagamento(id);
+    }
+
+    @GetMapping("/porta")
+    public String retornaPorta(@Value("${local.server.port}") String porta){
+        return String.format("Requisição respondida pela instância executando na porta %s", porta);
     }
 }
