@@ -39,31 +39,6 @@ public class PagamentoService {
         return new PagamentoResponseDto(pagamento);
     }
 
-    @Transactional
-    public PagamentoResponseDto updatePagamento(Long id, PagamentoRequestDto requestDto) {
-        Pagamento pagamento = repository.getReferenceById(id);
-        pagamento.update(requestDto);
-        return new PagamentoResponseDto(pagamento);
-    }
-
-    @Transactional
-    public PagamentoResponseDto updateStatusConfirmadoPagamento(Long id) {
-        Pagamento pagamento = repository.getReferenceById(id);
-        pagamento.updateStatusConfirmado();
-        return new PagamentoResponseDto(pagamento);
-    }
-
-    @Transactional
-    public PagamentoResponseDto updateStatusCanceladoPagamento(Long id) {
-        Pagamento pagamento = repository.getReferenceById(id);
-        pagamento.updateStatusCancelado();
-        return new PagamentoResponseDto(pagamento);
-    }
-
-    @Transactional
-    public void deletePagamento(Long id) {
-        repository.deleteById(id);
-    }
 
     public void confirmarPagamento(Long id){
         Optional<Pagamento> pagamento = repository.findById(id);

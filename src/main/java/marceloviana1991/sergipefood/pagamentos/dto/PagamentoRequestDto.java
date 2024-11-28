@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 public record PagamentoRequestDto(
         BigDecimal valor,
         String nome,
-        Long pedidoId,
-        Long formaDePagamentoId
+        Long pedidoId
 ) {
 }

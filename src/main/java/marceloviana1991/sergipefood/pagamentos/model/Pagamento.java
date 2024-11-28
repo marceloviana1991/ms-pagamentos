@@ -40,29 +40,10 @@ public class Pagamento {
     @NotNull
     private Long pedidoId;
 
-    @NotNull
-    private Long formaDePagamentoId;
-
     public Pagamento(PagamentoRequestDto requestDto) {
         this.valor = requestDto.valor();
         this.nome = requestDto.nome();
         this.status = Status.CRIADO;
         this.pedidoId = requestDto.pedidoId();
-        this.formaDePagamentoId = requestDto.formaDePagamentoId();
-    }
-
-    public void update(PagamentoRequestDto requestDto) {
-        if(requestDto.valor() != null) {this.valor = requestDto.valor();}
-        if(requestDto.nome() != null) {this.nome = requestDto.nome();}
-        if(requestDto.pedidoId() != null) {this.pedidoId = requestDto.pedidoId();}
-        if(requestDto.formaDePagamentoId() != null) {this.formaDePagamentoId = requestDto.formaDePagamentoId();}
-    }
-
-    public void updateStatusConfirmado() {
-        this.status = Status.CONFIRMADO;
-    }
-
-    public void updateStatusCancelado() {
-        this.status = Status.CANCELADO;
     }
 }

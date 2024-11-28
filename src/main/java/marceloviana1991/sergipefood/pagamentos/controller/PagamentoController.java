@@ -42,31 +42,6 @@ public class PagamentoController {
         return ResponseEntity.created(endereco).body(responseDto);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PagamentoResponseDto> updatePagamento(@PathVariable @NotNull Long id,
-                                                                @RequestBody @Valid PagamentoRequestDto requestDto) {
-        PagamentoResponseDto responseDto = service.updatePagamento(id, requestDto);
-        return ResponseEntity.ok(responseDto);
-    }
-
-    @PutMapping("/confirmado/{id}")
-    public ResponseEntity<PagamentoResponseDto> updateStatusConfirmadoPagamento(@PathVariable @NotNull Long id) {
-        PagamentoResponseDto responseDto = service.updateStatusConfirmadoPagamento(id);
-        return ResponseEntity.ok(responseDto);
-    }
-
-    @PutMapping("/cancelado/{id}")
-    public ResponseEntity<PagamentoResponseDto> updateStatusCanceladoPagamento(@PathVariable @NotNull Long id) {
-        PagamentoResponseDto responseDto = service.updateStatusCanceladoPagamento(id);
-        return ResponseEntity.ok(responseDto);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<PagamentoResponseDto> deletePagamento(@PathVariable @NotNull Long id) {
-        service.deletePagamento(id);
-        return ResponseEntity.noContent().build();
-    }
-
     @PatchMapping("/{id}/confirmar")
     public void confirmarPagamento(@PathVariable @NotNull Long id){
         service.confirmarPagamento(id);

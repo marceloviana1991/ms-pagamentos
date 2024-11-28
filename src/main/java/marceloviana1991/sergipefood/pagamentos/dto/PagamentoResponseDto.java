@@ -10,8 +10,7 @@ public record PagamentoResponseDto(
         BigDecimal valor,
         String nome,
         Status status,
-        Long pedidoId,
-        Long formaDePagamentoId
+        Long pedidoId
 ) {
     public PagamentoResponseDto(Pagamento pagamento) {
         this(
@@ -19,8 +18,7 @@ public record PagamentoResponseDto(
                 pagamento.getValor(),
                 pagamento.getNome(),
                 pagamento.getStatus(),
-                pagamento.getPedidoId(),
-                pagamento.getFormaDePagamentoId()
+                pagamento.getPedidoId()
         );
     }
 }
