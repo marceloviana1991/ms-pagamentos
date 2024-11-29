@@ -42,9 +42,9 @@ public class PagamentoController {
         return ResponseEntity.created(endereco).body(responseDto);
     }
 
-    @PatchMapping("/{id}/confirmar")
-    public void confirmarPagamento(@PathVariable @NotNull Long id){
-        service.confirmarPagamento(id);
+    @PutMapping
+    public void aprovaPagamento(@PathVariable Long id) {
+        service.aprovaPagamento(id);
     }
 
     @GetMapping("/porta")
