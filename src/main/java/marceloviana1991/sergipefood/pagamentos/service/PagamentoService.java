@@ -35,7 +35,7 @@ public class PagamentoService {
 
     @Transactional
     public void aprovaPagamento(Long id) {
-        Pagamento pagamento = repository.getReferenceById(id);
+        Pagamento pagamento = repository.getByPedidoId(id);
         pagamento.setStatus(Status.CONFIRMADO);
     }
 }

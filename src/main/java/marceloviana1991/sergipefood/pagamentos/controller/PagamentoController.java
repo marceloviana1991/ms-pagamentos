@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import marceloviana1991.sergipefood.pagamentos.dto.PagamentoRequestDto;
 import marceloviana1991.sergipefood.pagamentos.dto.PagamentoResponseDto;
 import marceloviana1991.sergipefood.pagamentos.service.PagamentoService;
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +24,9 @@ public class PagamentoController {
 
     @Autowired
     private PagamentoService service;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @GetMapping
     public List<PagamentoResponseDto> getPagePagamentos(@PageableDefault(size = 10) Pageable pageable) {
@@ -42,9 +47,10 @@ public class PagamentoController {
         return ResponseEntity.created(endereco).body(responseDto);
     }
 
-    @PutMapping
+    @PutMapping("pedidos/{id}")
     public void aprovaPagamento(@PathVariable Long id) {
         service.aprovaPagamento(id);
+        rabbitTemplate.convertAndSend("pagamento.concluido", id);
     }
 
     @GetMapping("/porta")
