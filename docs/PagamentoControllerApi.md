@@ -1,7 +1,5 @@
 # PagamentoControllerApi
 
-All URIs are relative to *http://192.168.9.212:35949*
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**aprovaPagamento**](PagamentoControllerApi.md#aprovaPagamento) | **PUT** /pagamentos/pedidos/{id} | 
@@ -18,10 +16,6 @@ Method | HTTP request | Description
 
 ### Example
 ```java
-// Import classes:
-//import io.swagger.client.ApiException;
-//import io.swagger.client.api.PagamentoControllerApi;
-
 
 PagamentoControllerApi apiInstance = new PagamentoControllerApi();
 Long id = 789L; // Long | 
@@ -60,10 +54,6 @@ No authorization required
 
 ### Example
 ```java
-// Import classes:
-//import io.swagger.client.ApiException;
-//import io.swagger.client.api.PagamentoControllerApi;
-
 
 PagamentoControllerApi apiInstance = new PagamentoControllerApi();
 Long id = 789L; // Long | 
@@ -103,10 +93,6 @@ No authorization required
 
 ### Example
 ```java
-// Import classes:
-//import io.swagger.client.ApiException;
-//import io.swagger.client.api.PagamentoControllerApi;
-
 
 PagamentoControllerApi apiInstance = new PagamentoControllerApi();
 Pageable pageable = new Pageable(); // Pageable | 
@@ -146,10 +132,6 @@ No authorization required
 
 ### Example
 ```java
-// Import classes:
-//import io.swagger.client.ApiException;
-//import io.swagger.client.api.PagamentoControllerApi;
-
 
 PagamentoControllerApi apiInstance = new PagamentoControllerApi();
 String porta = "porta_example"; // String | 
@@ -189,10 +171,6 @@ No authorization required
 
 ### Example
 ```java
-// Import classes:
-//import io.swagger.client.ApiException;
-//import io.swagger.client.api.PagamentoControllerApi;
-
 
 PagamentoControllerApi apiInstance = new PagamentoControllerApi();
 PagamentoRequestDto body = new PagamentoRequestDto(); // PagamentoRequestDto | 
