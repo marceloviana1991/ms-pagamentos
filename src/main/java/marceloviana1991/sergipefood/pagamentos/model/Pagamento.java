@@ -27,11 +27,8 @@ public class Pagamento {
 
     @NotNull
     @Positive
-    private BigDecimal valor;
+    private Double valor;
 
-    @NotBlank
-    @Size(max=100)
-    private String nome;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -42,7 +39,6 @@ public class Pagamento {
 
     public Pagamento(PagamentoRequestDto requestDto) {
         this.valor = requestDto.valor();
-        this.nome = requestDto.nome();
         this.status = Status.CRIADO;
         this.pedidoId = requestDto.pedidoId();
     }

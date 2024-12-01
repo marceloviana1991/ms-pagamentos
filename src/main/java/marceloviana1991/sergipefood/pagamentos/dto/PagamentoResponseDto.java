@@ -7,8 +7,7 @@ import java.math.BigDecimal;
 
 public record PagamentoResponseDto(
         Long id,
-        BigDecimal valor,
-        String nome,
+        Double valor,
         Status status,
         Long pedidoId
 ) {
@@ -16,7 +15,6 @@ public record PagamentoResponseDto(
         this(
                 pagamento.getId(),
                 pagamento.getValor(),
-                pagamento.getNome(),
                 pagamento.getStatus(),
                 pagamento.getPedidoId()
         );
