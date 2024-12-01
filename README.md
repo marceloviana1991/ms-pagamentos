@@ -30,6 +30,28 @@ http://localhost:8082/pagamentos-ms/pagamentos
 | PUT | aprovaPagamento | Atualiza o status do pagamento para confirmado | 
 
 
+### Body Content
+
+```
+Resquest
+{
+    "valor": Double,
+    "pedidoId": Long
+}
+```
+
+```
+Response
+{
+    "id": Long
+    "valor": Double,
+    "status": ["CONFIRMADO", "CRIADO"],
+    "pedidoId": Long
+}
+```
+
+
+
 
 
 
