@@ -1,11 +1,11 @@
-# Microsserviço de Pedidos
+# Microsserviço de Pagamentos
 
-API Rest responsável pelo gerenciamento do microsserviço de pedidos da aplicação Sergipe-Food
+API Rest responsável pelo gerenciamento do microsserviço de pagamentos da aplicação Sergipe-Food
 
 
 ## Informações Gerais
 
-- Registra pagamentos escutando fila criada pelo microsserviços de pedidos ("pedido.registrado")
+- Registra pagamentos escutando fila criada pelo microsserviço de pedidos ("pedido.registrado")
 - Edita Status do pagamento e cria fila ("pagamento.concluido") que será escutada pelo microsserviços de pedidos
 
 
