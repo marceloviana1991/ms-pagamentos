@@ -47,10 +47,11 @@ public class PagamentoController {
         return ResponseEntity.created(endereco).body(responseDto);
     }
 
-    @PutMapping("pedidos/{id}")
-    public void aprovaPagamento(@PathVariable Long id) {
-        service.aprovaPagamento(id);
-        rabbitTemplate.convertAndSend("pagamento.concluido", id);
+    @PutMapping("/confirmar/{id}")
+    public ResponseEntity<PagamentoResponseDto> aprovaPagamento(@PathVariable Long id) {
+        PagamentoResponseDto responseDto = service.aprovaPagamento(id);
+        rabbitTemplate.convertAndSend("pagamento.concluido", responseDto);
+        return ResponseEntity.ok(responseDto);
     }
 
     @GetMapping("/porta")
