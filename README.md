@@ -26,8 +26,8 @@ http://localhost:8082/pagamentos-ms/pagamentos
 |-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
 | POST | savePagamento | Cria um novo pagamento a ser processado |
 | GET | getPagePagamentos | Pesquisa por todos os pagamentos realizados | 
-| GET | getPagamento | Consulta todas as informações de um pagamento através de um ```id``` .| 
-| PUT | aprovaPagamento | Atualiza o status do pagamento para confirmado | 
+| GET | getPagamento | Consulta todas as informações de um pagamento através de um ```id``` | 
+| PUT | aprovaPagamento | Acessado na rota ```/confirmar/```. Atualiza o status do pagamento para confirmado através de um ```ìd``` | 
 
 
 ### Body Content
