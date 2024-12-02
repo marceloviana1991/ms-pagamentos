@@ -22,12 +22,13 @@ http://localhost:8082/pagamentos-ms/pagamentos
 
 ### Endpoints
 
-| Método | Nome do endpoint | Descrição |
-|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| POST | savePagamento | Cria um novo pagamento a ser processado |
-| GET | getPagePagamentos | Pesquisa por todos os pagamentos realizados | 
-| GET | getPagamento | Consulta todas as informações de um pagamento através de um ```id``` | 
-| PUT | aprovaPagamento | Acessado na rota ```/confirmar/```. Atualiza o status do pagamento para confirmado através de um ```ìd``` | 
+
+| Método | Nome do endpoint | route | Body Request | Body Response | Path Variable
+|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------| -----------------------------------------------------------------------------------------------------------------| -----------------------------------------------------------------------------------------------------------------|
+| POST | savePagamento |  | application/json | application/json | |
+| GET | getPagePagamentos |  |  |  application/json | |
+| GET | getPagamento | |  | application/json | ```{id}``` |
+| PUT | aprovaPagamento |```/confirmar``` || application/json |```{id}``` |
 
 
 ### Body Content
